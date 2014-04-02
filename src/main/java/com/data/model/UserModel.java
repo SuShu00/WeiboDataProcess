@@ -264,6 +264,70 @@ public class UserModel {
 	public void setFollowersIds(String followersIds) {
 		this.followersIds = followersIds;
 	}
-	
+	@Override
+	public String toString() {
+		return "User [id="
+				+ id
+				+ ", "
+				+ (idstr != null ? "idstr=" + idstr + ", " : "")
+				+ (screen_name != null ? "screen_name=" + screen_name + ", "
+						: "")
+				+ (name != null ? "name=" + name + ", " : "")
+				+ "province="
+				+ province
+				+ ", city="
+				+ city
+				+ ", "
+				+ (location != null ? "location=" + location + ", " : "")
+				+ (description != null ? "description=" + description + ", "
+						: "")
+				+ (url != null ? "url=" + url + ", " : "")
+				+ (profile_url != null ? "profile_url=" + profile_url + ", "
+						: "")
+				+ (profile_image_url != null ? "profile_image_url="
+						+ profile_image_url + ", " : "")
+				+ (domain != null ? "domain=" + domain + ", " : "")
+				+ (gender != null ? "gender=" + gender + ", " : "")
+				+ "followers_count="
+				+ followers_count
+				+ ", friends_count="
+				+ friends_count
+				+ ", statuses_count="
+				+ statuses_count
+				+ ", favourites_count="
+				+ favourites_count
+				+ ", "
+				+ (created_at != null ? "created_at=" + created_at + ", " : "")
+				+ "following="
+				+ following
+				+ ", verified="
+				+ verified
+				+ ", verified_type="
+				+ verified_type
+				+ ", allow_all_actMsg="
+				+ allow_all_actMsg
+				+ ", allow_all_comment="
+				+ allow_all_comment
+				+ ", follow_me="
+				+ follow_me
+				+ ", geo_enable="
+				+ geo_enable
+				+ ", "
+				+ (avatar_large != null ? "avatar_large=" + avatar_large + ", "
+						: "")
+				+ "online_status="
+				+ online_status
+				+ ", bi_followers_count="
+				+ bi_followers_count
+				+ ", "
+				+ (remark != null ? "remark=" + remark + ", " : "")
+				+ (lang != null ? "lang=" + lang + ", " : "")
+				+ (verified_reason != null ? "verified_reason="
+						+ verified_reason + ", " : "")
+				+ (weihao != null ? "weihao=" + weihao + ", " : "")
+				+ (statusId != null ? "statusId=" + statusId : "")
+				+ "tags="
+				+ tags + "]";
+	}
 
 }

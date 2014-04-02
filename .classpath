@@ -19,5 +19,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="libs/lucene-analyzers-common-4.5.1.jar"/>
+	<classpathentry kind="lib" path="libs/lucene-codecs-4.5.1.jar"/>
+	<classpathentry kind="lib" path="libs/lucene-core-4.5.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
