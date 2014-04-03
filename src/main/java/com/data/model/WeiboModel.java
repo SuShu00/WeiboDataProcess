@@ -183,6 +183,39 @@ public class WeiboModel {
 	public void setUid(long uid) {
 		this.uid = uid;
 	}
-	
+	public String toString() {
+		return "WeiboModel ["
+				+ (created_at != null ? "created_at=" + created_at + ", " : "")
+				+ "id="
+				+ id
+				+ ", "
+				+ (mid != null ? "mid=" + mid + ", " : "")
+				+ (idstr != null ? "idstr=" + idstr + ", " : "")
+				+ (text != null ? "text=" + text + ", " : "")
+				+ (source != null ? "source=" + source + ", " : "")
+				+ "favorited="
+				+ favorited
+				+ ", truncated="
+				+ truncated
+				+ ", "
+				+ (in_reply_to_status_id != null ? "in_reply_to_status_id="
+						+ in_reply_to_status_id + ", " : "")
+				+ (in_reply_to_user_id != null ? "in_reply_to_user_id="
+						+ in_reply_to_user_id + ", " : "")
+				+ (in_reply_to_screen_name != null ? "in_reply_to_screen_name="
+						+ in_reply_to_screen_name + ", " : "")
+				+ (thumbnail_pic != null ? "thumbnail_pic=" + thumbnail_pic
+						+ ", " : "")
+				+ (bmiddle_pic != null ? "bmiddle_pic=" + bmiddle_pic + ", "
+						: "")
+				+ (original_pic != null ? "original_pic=" + original_pic + ", "
+						: "") + (geo != null ? "geo=" + geo + ", " : "")
+				+ (pic_urls != null ? "pic_urls=" + pic_urls + ", " : "")
+				+ "reposts_count=" + reposts_count + ", comments_count="
+				+ comments_count + ", attitudes_count=" + attitudes_count
+				+ ", mlevel=" + mlevel + ", "
+				+ (visible != null ? "visible=" + visible + ", " : "") + "uid="
+				+ uid + "]";
+	}
 
 }

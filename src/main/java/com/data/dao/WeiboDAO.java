@@ -8,6 +8,6 @@ public interface WeiboDAO {
 	 * @param id
 	 * @return
 	 */
-	public WeiboModel load(long id);
+	public WeiboModel load(int id);
 
 }

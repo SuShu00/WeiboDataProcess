@@ -19,7 +19,7 @@ public class WeiboDAOImpl implements WeiboDAO {
 		}
 	}
 	@Override
-	public WeiboModel load(long id) {
+	public WeiboModel load(int id) {
 		 WeiboModel weiboModel = null;
 		 Session session = sessionFactory.openSession();
 		 session.beginTransaction();
