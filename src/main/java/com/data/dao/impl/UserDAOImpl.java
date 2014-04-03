@@ -17,7 +17,7 @@ public class UserDAOImpl implements UserDAO {
 	private static Logger LOG = Logger.getLogger(UserDAOImpl.class);
 	private static SessionFactory sessionFactory = null;
 	
-	public UserDAOImpl(){
+	static{
 		try {
 			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		} catch (HibernateException e) {

@@ -5,13 +5,17 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
+
+import com.data.commons.utils.BaseDecoder;
 import com.data.dao.WeiboDAO;
 import com.data.model.WeiboModel;
 
 public class WeiboDAOImpl implements WeiboDAO {
 	private static Logger LOG = Logger.getLogger(WeiboDAOImpl.class);
 	private static SessionFactory sessionFactory = null;
-	public WeiboDAOImpl(){
+	private static BaseDecoder baseDecoder = null;
+	static{
+		baseDecoder = new BaseDecoder();
 		try {
 			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		} catch (HibernateException e) {
@@ -38,6 +42,7 @@ public class WeiboDAOImpl implements WeiboDAO {
 	        } finally {
 	            session.close();
 	        }
+	        weiboModel.setText(baseDecoder.decode(weiboModel.getText()));
 	        return weiboModel;
 	}
 }
