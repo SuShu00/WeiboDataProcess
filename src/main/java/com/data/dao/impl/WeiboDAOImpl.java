@@ -11,13 +11,13 @@ import com.data.model.WeiboModel;
 public class WeiboDAOImpl implements WeiboDAO {
 	private static Logger LOG = Logger.getLogger(WeiboDAOImpl.class);
 	private static SessionFactory sessionFactory = null;
-	public WeiboDAOImpl(){
-		try {
-			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
-		} catch (HibernateException e) {
-			LOG.error("sessionFactory建立失败，请检查配置文件" + e.getMessage());
-		}
-	}
+    static {
+        try {
+            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+        } catch (HibernateException e) {
+            LOG.error("sessionFactory建立失败，请检查配置文件" + e.getMessage());
+        }
+    }
 	@Override
 	public WeiboModel load(int id) {
 		 WeiboModel weiboModel = null;
