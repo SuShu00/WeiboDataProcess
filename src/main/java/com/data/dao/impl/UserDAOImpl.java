@@ -1,5 +1,8 @@
 package com.data.dao.impl;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -45,7 +48,24 @@ public class UserDAOImpl implements UserDAO {
 	        } finally {
 	            session.close();
 	        }
-	        return userModel;
-
+	     return userModel;
+	}
+	
+	@Override
+    public Set<String> listUid() {
+        Set<String> set = new HashSet<String>();
+        Session s = sessionFactory.openSession();
+        s.beginTransaction();
+        for (Object id : s.createSQLQuery("select id from user").list()) {
+            set.add(id.toString());
+        }
+        try {
+            s.getTransaction().commit();
+        } catch (HibernateException e) {
+            LOG.error("获取用户uid列表失败");
+            e.printStackTrace();
+        }
+        s.close();
+        return set;
 	}
 }

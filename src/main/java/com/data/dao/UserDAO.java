@@ -1,5 +1,7 @@
 package com.data.dao;
 
+import java.util.Set;
+
 import com.data.model.UserModel;
 
 /**
@@ -13,5 +15,11 @@ public interface UserDAO {
 	 * @return
 	 */
 	public UserModel load(long id);
+	
+	/**
+	 * 获取UID列表
+	 * @return
+	 */
+	public Set<String> listUid();
 
 }

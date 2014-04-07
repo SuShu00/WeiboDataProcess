@@ -1,5 +1,8 @@
 package com.data.dao.impl;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -45,4 +48,23 @@ public class WeiboDAOImpl implements WeiboDAO {
 	        weiboModel.setText(baseDecoder.decode(weiboModel.getText()));
 	        return weiboModel;
 	}
+	
+	@Override
+    public Set<String> listWeiboId() {
+        Set<String> set = new HashSet<String>();
+        Session s = sessionFactory.openSession();
+        s.beginTransaction();
+        for (Object weiboId : s.createSQLQuery("select weiboId from weibo").list()) {
+            set.add(weiboId.toString());
+        }
+        try {
+            s.getTransaction().commit();
+        } catch (HibernateException e) {
+            LOG.error("获取用户weiboId列表失败");
+            e.printStackTrace();
+        }
+        s.close();
+        return set;
+    }
+
 }
