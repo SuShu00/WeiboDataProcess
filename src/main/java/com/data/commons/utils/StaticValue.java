@@ -7,5 +7,5 @@ public final class StaticValue {
 	/**
 	 * 索引库地址
 	 */
-	 public static String INDEX_PATH = "F:\\JavaProject\\WeiboDataProcess\\LuceneIndex";
+	 public static String INDEX_PATH = "F:\\Lucene_Index";
 }

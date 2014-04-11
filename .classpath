@@ -23,5 +23,6 @@
 	<classpathentry kind="lib" path="libs/lucene-codecs-4.5.1.jar"/>
 	<classpathentry kind="lib" path="libs/lucene-core-4.5.1.jar"/>
 	<classpathentry kind="lib" path="libs/SkyLightAnalyzer.jar"/>
+	<classpathentry kind="lib" path="libs/randomizedtesting-runner-2.0.10.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
