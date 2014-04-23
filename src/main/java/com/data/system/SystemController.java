@@ -2,10 +2,8 @@ package com.data.system;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
-
 import com.data.commons.utils.Object2Document;
 import com.data.create.index.CreateIndex;
 import com.data.dao.impl.WeiboDAOImpl;
@@ -22,6 +20,7 @@ public class SystemController {
 		set = weiboDAOImpl.listWeiboId();
 		int index = 1;
 		LOG.info("-------------------------------");
+		LOG.info("数据库中共有" + set.size() + "条数据");
 		LOG.info("开始创建索引");
 		LOG.info("-------------------------------");
 		for(String s : set){
@@ -29,9 +28,18 @@ public class SystemController {
 			LOG.info("第" + index + "个微博对象获取成功");
 			document = Object2Document.ObjectToDocument(weiboModel);
 			LOG.info("document对象转换成功");
-			createIndex.createIndex(CreateIndex.getIndexWriter(), document);
+			createIndex.createIndex(document);
 			LOG.info("此document对象创建索引成功 ");
-			index++;	
+			index++;
+			if(index%1000==0){
+				createIndex.commit();
+			}
+			if(index==set.size()||index==10000){
+				createIndex.optimize();
+				createIndex.commit();
+				createIndex.close();
+				break;
+			}
 		}
 	}
 }

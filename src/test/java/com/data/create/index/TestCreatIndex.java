@@ -23,7 +23,7 @@ public class TestCreatIndex {
 		weiboModel = weiboDAOImpl.load(3204741);
 		document = Object2Document.ObjectToDocument(weiboModel);
 		LOG.info("document对象转换成功");
-		createIndex.createIndex(CreateIndex.getIndexWriter(), document);
+		createIndex.createIndex(document);
 		LOG.info("此document对象创建索引成功 ");
 	}
 	@Test
@@ -40,9 +40,13 @@ public class TestCreatIndex {
 			LOG.info("第" + index + "个微博对象获取成功");
 			document = Object2Document.ObjectToDocument(weiboModel);
 			LOG.info("document对象转换成功");
-			createIndex.createIndex(CreateIndex.getIndexWriter(), document);
+			createIndex.createIndex(document);
 			LOG.info("此document对象创建索引成功 ");
-			index++;	
+			index++;
+			if(index==100){
+				createIndex.commit();
+				createIndex.close();
+			}
 		}
 	}
 
