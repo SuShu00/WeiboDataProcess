@@ -25,16 +25,23 @@ public class SystemController {
 		LOG.info("-------------------------------");
 		for(String s : set){
 			weiboModel = weiboDAOImpl.load(Integer.valueOf(s));
+			LOG.info("weiboModel.ID="+weiboModel.getWeiboId());
 			LOG.info("第" + index + "个微博对象获取成功");
 			document = Object2Document.ObjectToDocument(weiboModel);
-			LOG.info("document对象转换成功");
+			LOG.info("document对象转换成功" + document.get("weiboId"));
 			createIndex.createIndex(document);
 			LOG.info("此document对象创建索引成功 ");
 			index++;
 			if(index%1000==0){
 				createIndex.commit();
 			}
-			if(index==set.size()||index==10000){
+//			if(index==set.size()||index==5000){//此处管理建立索引的数据条数
+//				createIndex.optimize();
+//				createIndex.commit();
+//				createIndex.close();
+//				break;
+//			}
+			if(index==set.size()){//此处管理建立索引的数据条数
 				createIndex.optimize();
 				createIndex.commit();
 				createIndex.close();

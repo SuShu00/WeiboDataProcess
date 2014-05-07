@@ -1,5 +1,6 @@
 package com.data.commons.utils;
 
+import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.StringField;
@@ -12,10 +13,7 @@ import com.data.model.WeiboModel;
  * @author Shu
  */
 public class Object2Document {
-	private static Document doc = null;
-	 static{
-		doc = new Document();
-	 }
+	private static Logger LOG = Logger.getLogger(Object2Document.class);
 	/**
 	 * 把WeiboModel对象和UserModel对象转换成一个Document类型
 	 * 
@@ -25,6 +23,7 @@ public class Object2Document {
 	 */
 	public static  Document ObjectToDocument(WeiboModel weiboModel,
 			UserModel userModel) {
+		Document doc = new Document();
 		doc.add(new StringField("id", String.valueOf(userModel.getId()),
 				Field.Store.YES));
 		doc.add(new StringField("screen_name", userModel.getScreen_name(),
@@ -43,6 +42,7 @@ public class Object2Document {
 	 * @return
 	 */
 	public static Document ObjectToDocument(WeiboModel weiboModel) {
+		Document doc = new Document();
 		doc.add(new StringField("weiboId", String.valueOf(weiboModel
 				.getWeiboId()), Field.Store.YES));
 		doc.add(new TextField("text", String.valueOf(weiboModel.getText()),
@@ -57,6 +57,7 @@ public class Object2Document {
 	 * @return
 	 */
 	public static Document ObjectToDocument(UserModel userModel) {
+		Document doc = new Document();
 		doc.add(new StringField("id", String.valueOf(userModel.getId()),
 				Field.Store.YES));
 		doc.add(new StringField("screen_name", userModel.getScreen_name(),
